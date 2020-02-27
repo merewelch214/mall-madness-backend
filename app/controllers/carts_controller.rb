@@ -1,8 +1,8 @@
-class Api::V1::CartsController < ApplicationController
+class CartsController < ApplicationController
 
     def index
         carts = Cart.all 
-        render :json carts
+        render json: carts
     end
 
     def create

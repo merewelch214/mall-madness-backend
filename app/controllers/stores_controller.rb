@@ -1,8 +1,8 @@
-class Api::V1::StoresController < ApplicationController
+class StoresController < ApplicationController
     
     def index
         stores = Store.all   
-        render :json stores
+        render json: stores
     end
 
     def create
@@ -16,6 +16,6 @@ class Api::V1::StoresController < ApplicationController
 
     private
     def stores_params
-        
+        permit(:store).require(:name, :owner_id)
     end
 end

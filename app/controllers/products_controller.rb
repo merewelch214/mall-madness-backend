@@ -1,8 +1,8 @@
-class Api::V1::ProductsController < ApplicationController
+class ProductsController < ApplicationController
     
     def index        
         products = Product.all   
-        render :json products
+        render json: products
     end
     
     def create
@@ -16,8 +16,9 @@ class Api::V1::ProductsController < ApplicationController
 
     def update 
         product = Product.find(product_params[:id])
-        product.update(name: product_params[:name], description: product_params[:description], price: product_params[:price], cart_id: product_params[:cart_id])
-        render :json product
+        product.update(product_params)
+            # name: product_params[:name], description: product_params[:description], price: product_params[:price], cart_id: product_params[:cart_id])
+        render json: product
     end
 
     def delete
@@ -27,6 +28,6 @@ class Api::V1::ProductsController < ApplicationController
 
     private
     def products_params
-        params.require(:prodcut).permit(:name, :description, :store_id, :price, :card_id)
+        params.require(:product).permit(:name, :description, :store_id, :price, :card_id)
     end
 end

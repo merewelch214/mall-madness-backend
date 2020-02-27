@@ -5,10 +5,27 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Cart.destroy_all
+Store.destroy_all
+Product.destroy_all
 
-user = User.create(username: 'user1', password: 'password', role: 'owner')
-user = User.create(username: 'user2', password: 'password', role: 'owner')
-user = User.create(username: 'user3', password: 'password', role: 'owner')
-user = User.create(username: 'user4', password: 'password', role: 'shopper')
-user = User.create(username: 'user5', password: 'password', role: 'shopper')
-user = User.create(username: 'user6', password: 'password', role: 'shopper')
+user1 = User.create(username: 'me', password: '123', role: 'owner')
+user2 = User.create(username: 'you', password: '123', role: 'owner')
+user3 = User.create(username: 'jay', password: '123', role: 'owner')
+user4 = User.create(username: 'meredith', password: '123', role: 'shopper')
+user5 = User.create(username: 'calvin', password: '123', role: 'shopper')
+user6 = User.create(username: 'brad', password: '123', role: 'shopper')
+
+cart4 = Cart.create(user: user4) 
+cart5 = Cart.create(user: user5) 
+cart6 = Cart.create(user: user6) 
+
+store1 = Store.create(user: user1, name: 'Hot Topic')
+store2 = Store.create(user: user1, name: 'Great American Cookie Co')
+store3 = Store.create(user: user1, name: 'Bath and Body Works')
+
+product1 = Product.create(name: 'Pumpkin Candle', description: 'It smells like Thanksgiving up in here!', store: store3, price: 24.99)
+product2 = Product.create(name: 'Chewy Chocolate Supreme Cookie', description: 'A really good cookie', store: store2, price: 2.50)
+product3 = Product.create(name: 'Temporary Tattoos', description: 'Edgy but not forever', store: store1, price: 2.99, cart: cart4)
+product4 = Product.create(name: 'Cupcake Body Butter', description: 'People will mistake your scent for a baked good!', store: store1, price: 14.99)
