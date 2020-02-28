@@ -9,24 +9,4 @@ Rails.application.routes.draw do
 
   resources :stores, only: [:index, :show, :create, :delete]
 
-  # resources :users do
-  #   resources :carts do
-  #     resources :products, only: [:index, :show, :delete]
-  #   end
-  # end
-
-  # resources :users do
-  #   resources :stores do 
-  #     resources :products, only: [:index, :show]
-  #   end
-  # end
-
-
-
 end
-
-
-# resources :carts, only: [:index, :create]
-# resources :products, only: [:index, :create, :update, :destroy]
-# resources :stores, only: [:index, :create]
-# resources :users, only: [:index, :create]
