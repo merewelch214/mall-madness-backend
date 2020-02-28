@@ -2,7 +2,12 @@ class UsersController < ApplicationController
 
     def index
         users = User.all   
-        render json: users
+        render json: users, include: [:store, :cart], exclude: [:created_at, :updated_at]
+    end
+
+    def show
+        user = User.find_by(id: params[:id])
+        render json: user, include: [:store, :cart]
     end
     
     def create
@@ -15,7 +20,7 @@ class UsersController < ApplicationController
     end
 
     private
-    def users_params
-        params.require(:user).permit(:username, :password, :role)
+    def user_params
+        params.require(:user).permit(:username, :password)
     end
 end

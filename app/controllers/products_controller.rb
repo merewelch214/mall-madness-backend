@@ -4,6 +4,10 @@ class ProductsController < ApplicationController
         products = Product.all   
         render json: products
     end
+
+    def show
+        product = Product.find(params[:id])
+    end
     
     def create
         product = Product.new(product_params)
@@ -27,7 +31,7 @@ class ProductsController < ApplicationController
     end
 
     private
-    def products_params
+    def product_params
         params.require(:product).permit(:name, :description, :store_id, :price, :card_id)
     end
 end

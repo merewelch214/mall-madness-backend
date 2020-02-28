@@ -2,7 +2,12 @@ class CartsController < ApplicationController
 
     def index
         carts = Cart.all 
-        render json: carts
+        render json: carts, except: [:created_at, :updated_at], include: :products
+    end
+
+    def show
+        cart = Cart.find_by(id: params[:id])
+        render json: cart, include: :products
     end
 
     def create
@@ -16,7 +21,7 @@ class CartsController < ApplicationController
 
     private
     def cart_params
-        params.require(:cart).permit(:user_id)
+        params.require(:cart).permit(:user_id, :id)
     end
 
 end

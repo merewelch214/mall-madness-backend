@@ -2,7 +2,12 @@ class StoresController < ApplicationController
     
     def index
         stores = Store.all   
-        render json: stores
+        render json: stores, include: :products
+    end
+
+    def show
+        store = Store.find_by(id: params[:id])
+        render json: store, include: :products
     end
 
     def create
@@ -15,7 +20,7 @@ class StoresController < ApplicationController
     end
 
     private
-    def stores_params
+    def store_params
         permit(:store).require(:name, :owner_id)
     end
 end
