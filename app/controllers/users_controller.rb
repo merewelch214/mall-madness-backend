@@ -6,12 +6,12 @@ class UsersController < ApplicationController
     end
 
     def show
-        user = User.find_by(id: params[:id])
+        user = User.find(params[:id])
         render json: user, include: [:store, :cart]
     end
     
     def create
-        user = User.new(user_params)
+        user = User.new(username: params[:username], password: params[:password])
         if user.save
             render json: user
         else
@@ -19,8 +19,4 @@ class UsersController < ApplicationController
         end
     end
 
-    private
-    def user_params
-        params.require(:user).permit(:username, :password)
-    end
 end
