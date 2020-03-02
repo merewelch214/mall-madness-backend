@@ -9,4 +9,13 @@ class AuthController < ApplicationController
         end
     end
 
+    def auto_login
+        user = User.find_by(id: request.headers['Authorization'])
+        if user
+            render json: user
+        else 
+            render json: {errors: 'not logged in'}
+        end
+    end
+
 end
