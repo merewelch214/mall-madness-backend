@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   post '/login', to:'auth#login'
   get '/mall', to: 'stores#index'
   get '/store/:id', to: 'store#show'
+  get '/auto_login', to: 'auth#auto_login'
 
 end
