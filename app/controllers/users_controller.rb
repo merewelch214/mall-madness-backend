@@ -13,7 +13,8 @@ class UsersController < ApplicationController
     def create
         user = User.new(username: params[:username], password: params[:password], role: params[:role])
         if user.save
-            render json: user
+            cart = Cart.create(user_id: user.id)
+            render json: user, include: [:store, :cart]
         else
             render json: {errors: user.errors.full_messages}
         end

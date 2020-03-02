@@ -3,7 +3,7 @@ class AuthController < ApplicationController
     def login
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
-            render json: user
+            render json: user, include: :cart
         else 
             render json: {errors: 'Incorrect username or password'}
         end

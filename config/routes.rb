@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :products, only: [:index, :show, :create, :delete]
+  resources :products, only: [:index, :show, :create, :delete, :update]
 
   resources :users, only: [:index, :create, :show]
 
-  resources :carts, only: [:index, :show, :create, :delete]
+  resources :carts, only: [:index, :show, :create, :delete, :update]
 
   resources :stores, only: [:index, :show, :create, :delete]
 
