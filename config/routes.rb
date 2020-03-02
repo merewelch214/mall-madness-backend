@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   resources :stores, only: [:index, :show, :create, :delete]
 
   post '/signup', to: 'users#create'
+  post '/login', to:'auth#login'
+  get '/mall', to: 'stores#index'
+  get '/store/:id', to: 'store#show'
 
 end
