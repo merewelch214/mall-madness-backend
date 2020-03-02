@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   get '/mall', to: 'stores#index'
   get '/store/:id', to: 'store#show'
   get '/auto_login', to: 'auth#auto_login'
+  get '/showBasedOnOwner/:user_id', to: 'stores#show_based_on_owner'
 
 end

@@ -10,6 +10,11 @@ class StoresController < ApplicationController
         render json: store, include: :products
     end
 
+    def show_based_on_owner
+        store = Store.find_by(user_id: params[:user_id])
+        render json: store, include: :products
+    end
+
     def create
         store = Store.new(store_params)
         if store.save
