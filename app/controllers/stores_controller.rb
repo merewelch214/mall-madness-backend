@@ -21,6 +21,6 @@ class StoresController < ApplicationController
 
     private
     def store_params
-        permit(:store).require(:name, :owner_id)
+        permit(:store).require(:name, :user_id)
     end
 end
