@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  resources :products, only: [:index, :show, :create, :delete, :update]
+  resources :products, only: [:index, :show, :create, :destroy, :update]
 
   resources :users, only: [:index, :create, :show]
 
-  resources :carts, only: [:index, :show, :create, :delete, :update]
+  resources :carts, only: [:index, :show, :create, :destroy, :update]
 
-  resources :stores, only: [:index, :show, :create, :delete]
+  resources :stores, only: [:index, :show, :create, :destroy]
 
   post '/signup', to: 'users#create'
   post '/login', to:'auth#login'
