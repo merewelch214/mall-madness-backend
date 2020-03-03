@@ -12,7 +12,7 @@ class AuthController < ApplicationController
     def auto_login
         user = User.find_by(id: request.headers['Authorization'])
         if user
-            render json: user
+            render json: user, include: :cart
         else 
             render json: {errors: 'not logged in'}
         end
