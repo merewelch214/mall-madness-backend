@@ -3,7 +3,7 @@ class AuthController < ApplicationController
     def login
         user = User.find_by(username: params[:username])
         if user && user.authenticate(params[:password])
-            render json: user, include: :cart
+            render json: user, include: [:cart, :store]
         else 
             render json: {errors: 'Incorrect username or password'}
         end
@@ -12,7 +12,7 @@ class AuthController < ApplicationController
     def auto_login
         user = User.find_by(id: request.headers['Authorization'])
         if user
-            render json: user
+            render json: user, include: [:cart, :store]
         else 
             render json: {errors: 'not logged in'}
         end
