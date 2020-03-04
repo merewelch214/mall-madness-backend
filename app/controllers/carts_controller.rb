@@ -19,16 +19,10 @@ class CartsController < ApplicationController
         end
     end
 
-    # def update 
-    #     byebug
-    #     cart = Cart.find_by(user_id: params[:user_id])
-    #     cart.update(params)
-    #     render json: cart
-    # end
 
     private
     def cart_params
-        params.require(:cart).permit(:user_id, :id)
+        params.require(:cart).permit(:user_id)
     end
 
 end

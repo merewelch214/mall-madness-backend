@@ -24,8 +24,14 @@ class StoresController < ApplicationController
         end
     end
 
+    def update
+        store = Store.find_by(id: params[:id])
+        store.update(name: params[:name], category: params[:category])
+        
+    end
+
     private
     def store_params
-        permit(:store).require(:name, :user_id)
+        permit(:store).require(:user_id, :name, :category)
     end
 end
