@@ -27,7 +27,7 @@ class StoresController < ApplicationController
     def update
         store = Store.find_by(id: params[:id])
         store.update(name: params[:name], category: params[:category])
-        
+        render json: store, include: :products
     end
 
     private
